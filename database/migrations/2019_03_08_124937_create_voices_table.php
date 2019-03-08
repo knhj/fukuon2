@@ -14,7 +14,15 @@ class CreateVoicesTable extends Migration
     public function up()
     {
         Schema::create('voices', function (Blueprint $table) {
-            $table->bigIncrements('id');
+          
+            $table->increments('id');
+            $table->string('name')->default('No name');
+            $table->string('user_id')->nullable();
+            $table->string('video_id');
+            $table->string('fukuon_id');
+            $table->string('fukuon_title')->default('No title');
+            $table->text('fukuon_comment')->nullable();
+            $table->integer('play_count')->default(0);
             $table->timestamps();
         });
     }

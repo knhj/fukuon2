@@ -50,33 +50,39 @@
                              <td>${obj[i].created_at}</td>
                              <td>${obj[i].play_count}</td>
                              </tr>`;
-         
-               
              }
-             console.log(str);
+            //  console.log(str);
          $('#echo').html(str);
         }
-        
-    //       const url = '/api/';
-    //   $.getJSON(url)
-    //   .done(function (data, textStatus, jqXHR) {
-    //       console.log(data['name']);
-    //   })
-    //   .fail(function (jqXHR, textStatus, errorThrown) {
-    //       console.log(jqXHR.status + textStatus + errorThrown);
-    //   })
-    //   .always(function () {
-    //       console.log('get:complete');
-    //   });
-        
-        
-        
-        
-        
-        
-        
-        
    }
+   
+   
+    // 表示する関数
+   function ranking(){
+        var str = "";
+        var ajax = new XMLHttpRequest();
+        ajax.open("get", "/api/ranking");
+        ajax.responseType = 'json';
+        ajax.send();
+        ajax.onload = function (e) {
+             console.log(e.target.response);
+             var obj = e.target.response;
+             console.log(obj);
+             
+             for(var i = 0; i < obj.length ; i++ ) {
+                  str += `<tr>
+                             <td><a href="/part//">${obj[i].fukuon_title}</a></td>
+                             <td>${obj[i].name}</td>
+                             <td>${obj[i].created_at}</td>
+                             <td>${obj[i].play_count}</td>
+                             </tr>`;
+             }
+            //  console.log(str);
+         $('#echo').html(str);
+        }
+   }
+   
+   
 
    // 削除する関数
    function deleteData(id){

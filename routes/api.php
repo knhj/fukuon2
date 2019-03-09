@@ -21,8 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth']], function () {
    // api関連の処理をまとめる（urlに自動的に/apiが加わる）
   Route::group(['middleware' => ['api']], function(){
-      // 表示
-      Route::get('/', 'Api\ApiController@index');
+      // 表示1
+      Route::get('/', 'Api\ApiController@newlist');
+       // 表示2
+      Route::get('/ranking', 'Api\ApiController@ranking');
       // 登録
     //   Route::post('/tasks', 'Api\ApiController@store');
       // 削除

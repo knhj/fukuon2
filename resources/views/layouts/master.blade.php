@@ -47,10 +47,10 @@
               <a class="nav-link" href="/part">動画検索</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/">新着副音声</a>
+              <a class="nav-link btn" id="newlist">新着副音声</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/ranking">ランキング</a>
+              <a class="nav-link btn" id="ranking">ランキング</a>
             </li>
           
           </ul>

@@ -31,8 +31,8 @@ class ApiController extends Controller
        return $voices;
     }
 
-    //表示処理関数
-    public function index() {
+    //表示処理関数1
+    public function newlist() {
         // $voices = Voice::where('user_id',Auth::user()->id)
         //             ->orderBy('deadline', 'desc')
         //             ->get();
@@ -40,8 +40,16 @@ class ApiController extends Controller
         $voices = Voice::orderBy('created_at', 'desc')
             ->get();
             
-       return $voices;
+        return $voices;
     }
+
+  public function ranking() {
+        $voices = Voice::orderBy('play_count', 'desc')
+            ->get();
+            
+        return $voices;
+    }
+
 
 
     //削除処理関数

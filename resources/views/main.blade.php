@@ -30,6 +30,15 @@
 <!--<script src="{{ secure_asset('js/api.js') }}" ></script>-->
 <script>
 newlist();
+// ranking();
+
+$('#newlist').on('click',function(){
+    newlist();
+});
+
+$('#ranking').on('click',function(){
+    ranking();
+});
 
 
 </script>

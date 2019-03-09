@@ -29,5 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     //   Route::post('/tasks', 'Api\ApiController@store');
       // 削除
     //   Route::post('/task/{task}', 'Api\ApiController@destroy');
+    // Route::get('number/{vid}', 'IndexController@number');
+     Route::get('/number/{video_id}', 'Api\ApiController@count');
+    
   });
 });

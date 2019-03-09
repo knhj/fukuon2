@@ -44,7 +44,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/part">動画検索</a>
+              <a class="nav-link btn" id="search_bar">動画検索</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link btn" id="newlist">新着副音声</a>

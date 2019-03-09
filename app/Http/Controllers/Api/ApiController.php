@@ -63,8 +63,16 @@ class ApiController extends Controller
        return $tasks;
    }
 
-    
-    
+    //動画に対する副音声投稿数カウント
+     public function count($video_id) {
+      
+    //   DB::table('voices')->where("v_id",$vid)->count();
+      
+       $voices = Voice::where('video_id',$video_id)
+            ->count();
+            
+        return $voices;
+   }
     
     
     

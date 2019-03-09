@@ -64,10 +64,12 @@
                                 @endif
                             </div>
                         </div>
-                        
-                         <a class="btn btn-block btn-social btn-google" href="auth/google">
-                          <i class="fab fa-google" aria-hidden="true"> Googleアカウントでログイン</i>
-                         </a>
+                        <hr>
+                        <div class="mt-3 mx-auto" style="width: 250px;" >
+                             <a class="btn btn-primary "  href="auth/google">
+                               Googleアカウントでログイン
+                             </a>
+                         </div>
                         
                     </form>
                 </div>

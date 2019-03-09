@@ -6,6 +6,10 @@
 // });
 
 Route::get('/', 'HomeController@top');
+Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth')->where('service', 'google');
+Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
+
+
 
 Auth::routes();
 

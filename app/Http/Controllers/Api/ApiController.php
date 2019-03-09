@@ -39,8 +39,7 @@ class ApiController extends Controller
         
         $voices = Voice::orderBy('created_at', 'desc')
             ->get();
-                    
-                    
+            
        return $voices;
     }
 

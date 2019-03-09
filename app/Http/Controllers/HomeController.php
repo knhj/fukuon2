@@ -37,8 +37,7 @@ class HomeController extends Controller
     
     public function top()
     {
-        return view('welcome');
-        
+        return view('main');
     }
     
     

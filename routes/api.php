@@ -21,16 +21,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth']], function () {
    // api関連の処理をまとめる（urlに自動的に/apiが加わる）
   Route::group(['middleware' => ['api']], function(){
-      // 表示1
+      // 表示新着順
       Route::get('/', 'Api\ApiController@newlist');
-       // 表示2
+       // 表示再生回数が多い順
       Route::get('/ranking', 'Api\ApiController@ranking');
       // 登録
     //   Route::post('/tasks', 'Api\ApiController@store');
+    
       // 削除
     //   Route::post('/task/{task}', 'Api\ApiController@destroy');
-    // Route::get('number/{vid}', 'IndexController@number');
-     Route::get('/number/{video_id}', 'Api\ApiController@count');
+    
+    // 動画検索時のその動画の投稿済副音声数を返す
+     Route::get('/number/{video_id}', 'Api\ApiController@cast_count');
+    
+     Route::get('/play_count_add/{fukuon_id}', 'Api\ApiController@play_count_add');
+
+    // Route::get('/part/{vid}/{fid}', 'Api\ApiController@play');
+    
     
   });
 });

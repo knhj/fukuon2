@@ -54,26 +54,26 @@ class ApiController extends Controller
 
     //削除処理関数
 
-   public function destroy($task_id) {
-       $task = Task::where('user_id',Auth::user()->id)->find($task_id);
-       $task->delete();
-       $tasks = Task::where('user_id',Auth::user()->id)
-               ->orderBy('deadline', 'desc')
-               ->get();
-       return $tasks;
-   }
+//   public function destroy($task_id) {
+//       $task = Task::where('user_id',Auth::user()->id)->find($task_id);
+//       $task->delete();
+//       $tasks = Task::where('user_id',Auth::user()->id)
+//               ->orderBy('deadline', 'desc')
+//               ->get();
+//       return $tasks;
+//   }
 
     //動画に対する副音声投稿数カウント
-     public function count($video_id) {
-      
-    //   DB::table('voices')->where("v_id",$vid)->count();
-      
+     public function cast_count($video_id) {
        $voices = Voice::where('video_id',$video_id)
             ->count();
             
         return $voices;
    }
     
-    
+     function play_count_add($fukuon_id) {
+        // DB::table('voices')->where("f_id",$fid)->increment('play_count');
+         Voice::where('fukuon_id',$fukuon_id)->increment('play_count');
+    }
     
 }

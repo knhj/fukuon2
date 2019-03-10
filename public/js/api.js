@@ -22,11 +22,20 @@
              //   });
              
                   str += `<tr>
-                             <td><a href="/part//">${obj[i].fukuon_title}</a></td>
+                             <td><a class="btn" id="${obj[i].fukuon_id}">${obj[i].fukuon_title}</a></td>
                              <td>${obj[i].name}</td>
                              <td>${obj[i].created_at}</td>
                              <td>${obj[i].play_count}</td>
-                             </tr>`;
+                             </tr>
+                             <script>
+                             $('#${obj[i].fukuon_id}').on('click',function(){
+                                  
+                                location.href = 'part/${obj[i].video_id}/${obj[i].fukuon_id}';
+                                 
+                             });
+                             </script>
+                             
+                             `;
              }
             //  console.log(str);
          $('#echo').html(str);
@@ -47,11 +56,17 @@
             //  console.log(obj);
              for(var i = 0; i < obj.length ; i++ ) {
                   str += `<tr>
-                             <td><a href="/part//">${obj[i].fukuon_title}</a></td>
+                             <td><a class="btn" id="${obj[i].fukuon_id}">${obj[i].fukuon_title}</a></td>
                              <td>${obj[i].name}</td>
                              <td>${obj[i].created_at}</td>
                              <td>${obj[i].play_count}</td>
-                             </tr>`;
+                             </tr>
+                              <script>
+                             $('#${obj[i].fukuon_id}').on('click',function(){
+                                 location.href = 'part/${obj[i].video_id}/${obj[i].fukuon_id}';
+                             });
+                             </script>
+                             `;
              }
             //  console.log(str);
          $('#echo').html(str);
@@ -132,14 +147,9 @@
              var thmbnailurl = this.response.items[i].snippet.thumbnails.medium.url;
              var vtitle = this.response.items[i].snippet.title;
             array.push(videoid);
-            // var ajax = new XMLHttpRequest();
-            // ajax.open("get", '/number/'+videoid);
-            // ajax.responseType = 'json';
-            // ajax.send();
-            // ajax.onload = function (e) {
-            // console.log(this);
+           
              
-               tmp += '<div class="row mb-2 ">';
+              tmp += '<div class="row mb-2 ">';
               tmp +=   '<a class="col-10" href="/part/'+ videoid +'">';
               tmp +=     '<div class="col-10 d-inline-flex flex-row" id="result_title">';
               tmp +=       '<img class="img-thumbnail" style="width:128px;height:72px" src="' + thmbnailurl + '">';
@@ -177,14 +187,6 @@
             }
             
         }
-        
-        
-        
-        
-               
-               
-       
-       
        
        
    }
@@ -199,6 +201,5 @@
    }
 
     
-    
- 
+ // playとstoreは難しいため通常の画面遷移で対応
  

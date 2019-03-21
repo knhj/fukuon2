@@ -44,60 +44,59 @@
   <div id="setbtn" class=""></div>
 </div>
 
-<!--再生用DOM-->
-<!--<div id="playing"></div>-->
- <div id="playing" class="jumbotron pt-3">
-    <a id="video_title" class="lead d-block" href="" ></a>
-      <div class="d-sm-flex d-flex-column">
-        <div>
-           <div class="mt-2 mr-5" id="player"></div>
-           <div class="form-group d-flex rounded bg-dark text-white w-50 px-3 pt-2 mt-1">
-             <label for="soundvalue" class="mr-3" >副音声音量</label>
-             <input type="range" class="custom-range" style="width:200px;" id="soundvalue" min="0" max="1" step="0.001" value="1">
-           </div>
-      </div>
-      <div class="w-100">
-          <div>
-           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-         </div>
-          <div class="rounded bg-secondary w-100 h-100">
-          <div class=" bg-dark py-2 mt-1 text-center text-white" >副音声タイトル</div>
-          
-        <div id="fukuon_title" class="text-white text-justify"></div>
-         <div class="bg-dark py-2 mt-1 text-center text-white" >投稿者名</div>
-         <div id="user_name" class="text-white text-justify"></div>
-         <div class="bg-dark py-2 mt-1 text-center text-white" >コメント</div>
-           <div id="user_comment" class="text-white text-justify"></div>
-       </div>
-      </div>
+<!--マイページ用DOM-->
+ <div id="mypage" class="jumbotron py-3">
+     <div class="d-flex mb-2">
+        <h2 class="mb-0 ml-3" style="line-height:40px;">投稿済みの副音声</h2>
      </div>
-     <!--オーディオ関係。完成形は非表示にする-->
- <audio id="audio" src=""  style="display:none;" controls></audio>
-</div> 
+   
+    <table class="table table-borderless table-hover">
+        <thead class="bg-gray border-bottom border-dark">
+            <tr>
+                <th scope="col" class="w-50">副音声タイトル</th>
+        　 <th scope="col"></th>
+          <th scope="col">投稿日時</th>
+          <th scope="col">再生回数</th>
+          </tr>
+          </thead>
+        <tbody id="echo3">      
+    
+
+        </tbody>
+    </table>
+</div>
 
 
 <script>
 $('#search').hide();
-$('#playing').hide();
+$('#mypage').hide();
 newlist();
 
 
 $('#newlist').on('click',function(){
-    $('#playing').hide();
+   $('#mypage').hide();
     $('#search').hide();
     $('#list').show();
     newlist();
 });
 
 $('#ranking').on('click',function(){
-     $('#playing').hide();
+    $('#mypage').hide();
      $('#search').hide();
     $('#list').show();
     ranking();
 });
 
+$('#mypage_bar').on('click',function(){
+    $('#list').hide();
+     $('#search').hide();
+    $('#mypage').show();
+    mypage();
+});
+
+
 $('#search_bar').on('click',function(){
-     $('#playing').hide();
+     $('#mypage').hide();
      $('#list').hide();
     $('#search_form').show();
     // $('#result').children().remove();

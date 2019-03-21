@@ -1,4 +1,4 @@
-@extends('layouts.master2')
+@extends('layouts.master')
 
 @section('title', 'Fukuon - 副音声共有サービス')
 
@@ -18,7 +18,8 @@
       <div class="w-100">
           <div>
            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-         <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ffukuon.lolipop.io%2Fpart%2F{{$item[0]->fukuon_id}}&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+           <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ffukuon.lolipop.io%2Fpart%2F{{$item[0]->id}}&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
          </div>
           <div class="rounded bg-secondary w-100 h-100">
           <div class=" bg-dark py-2 mt-1 text-center text-white" >副音声タイトル</div>
@@ -118,7 +119,9 @@ soundvalue.addEventListener('change', function(e) {
         if (event.data == YT.PlayerState.PLAYING && onetime == 1) {
         //ajaxで副音声の再生回数カウンターを一回回している。onetimeを1->2にすることにより複数回のクリックを防ぐ
            var xhttpreq = new XMLHttpRequest();
-           xhttpreq.open("GET", "https://fukuon-dev2-knhj.c9users.io/api/play_count_add/"+fid);
+        //apiを使うとき
+        //   xhttpreq.open("GET", "https://fukuon-dev2-knhj.c9users.io/api/play_count_add/"+fid);
+           xhttpreq.open("GET", "/add/"+fid, true);
            xhttpreq.send();
          
         //   console.log("add open!"+"/add/"+fid );

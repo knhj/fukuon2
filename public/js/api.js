@@ -1,9 +1,3 @@
-
-    // 登録する関数
-   function storeData(){
-       //
-   }
-
    // 表示する関数:新着順
    function newlist(){
         var str = "";
@@ -73,6 +67,51 @@
         }
    }
    
+   //自分の投稿した副音声を表示
+   function mypage(){
+        var str = "";
+        var ajax = new XMLHttpRequest();
+        ajax.open("get", "/api/mypage");
+        ajax.responseType = 'json';
+        ajax.send();
+        ajax.onload = function (e) {
+             console.log(e.target.response);
+             var obj = e.target.response;
+             console.log(obj);
+             
+             for(var i = 0; i < obj.length ; i++ ) {
+             
+                  str += `<tr>
+                             <td><a class="btn" id="${obj[i].fukuon_id}">${obj[i].fukuon_title}</a></td>
+                             <td> <button id="${obj[i].id}" class="btn btn-danger">削除</button></td>
+                             <td>${obj[i].created_at}</td>
+                             <td>${obj[i].play_count}</td>
+                             </tr>
+                             <script>
+                             $('#${obj[i].fukuon_id}').on('click',function(){
+                                  
+                                location.href = 'part/${obj[i].video_id}/${obj[i].fukuon_id}';
+                                 
+                             });
+                             
+                              $('#${obj[i].id}').on('click',function(){
+                                     var ajax = new XMLHttpRequest();
+                                            ajax.open("get", "/api/delete/${obj[i].id}");
+                                            ajax.send();
+                                            ajax.onload = function (e) {
+                                                location.href = '/'; 
+                                            }
+                                 
+                             });
+                             </script>
+                             
+                             `;
+             }
+          console.log(str);
+         $('#echo3').html(str);
+        }
+   }
+   
     //検索する関数
    function search(search_word){
        
@@ -128,9 +167,7 @@
                
             };
         
-        // console.log("test");
-        
-        // });
+       
         
         setbtn.addEventListener('click', function(e) {
             var ajax = new XMLHttpRequest();
@@ -192,14 +229,3 @@
    }
    
    
-   
-   
-
-   // 削除する関数
-   function deleteData(id){
-       //
-   }
-
-    
- // playとstoreは難しいため通常の画面遷移で対応
- 

@@ -27,9 +27,11 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('/ranking', 'Api\ApiController@ranking');
       // 登録
     //   Route::post('/tasks', 'Api\ApiController@store');
+      Route::get('/mypage', 'Api\ApiController@mypage');
+    
     
       // 削除
-    //   Route::post('/task/{task}', 'Api\ApiController@destroy');
+      Route::get('/delete/{voice_id}', 'Api\ApiController@destroy');
     
     // 動画検索時のその動画の投稿済副音声数を返す
      Route::get('/number/{video_id}', 'Api\ApiController@cast_count');

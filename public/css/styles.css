@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.bar_top{
+text-decoration: none;
+ color: white;
+}
+
+.bar_top:hover{
+text-decoration: none;
+ color: white;
+}

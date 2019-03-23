@@ -17,7 +17,7 @@
        </div>
     </div>
   </div>
-      <table class="table table-borderless table-hover mb-3" style="height:25px;">
+      <table class="table table-borderless table-hover" style="height:25px;">
         <thead class="bg-gray border-bottom border-dark">
           <tr>
             <th scope="col" class="w-50">副音声タイトル</th>
@@ -39,11 +39,12 @@
         </tbody>
     </table>
     
-          <div class="paginate w-25 mx-auto" style="height:50px;" >
-        	{{ $items->links() }}
-        　</div>
+        
 　　
 </div>
+  <div class="paginate w-25 mx-auto" >
+        	{{ $items->links() }}
+        　</div>
 <script>
 const search_btn = document.getElementById("search_btn");
 const input= document.getElementById("input");

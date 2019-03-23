@@ -26,7 +26,7 @@ Route::get('/add/{fid}', 'HomeController@add');
 Route::get('/ranking', 'HomeController@ranking');
 
 //マイページを表示
-Route::post('/mypage', 'HomeController@mypage');
+Route::get('/mypage', 'HomeController@mypage');
 
 
 //再生画面へ

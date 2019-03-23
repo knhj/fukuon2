@@ -65,8 +65,6 @@
            <div id="cast"></div>
         </div>
           
-          
-          
         </div>
         
       </div>

@@ -55,7 +55,7 @@ class HomeController extends Controller
     }
     
     
-    
+    //副音声再生ページ
      public function play($video_id,$fukuon_id) {
         $item  =  DB::table('voices')->where("fukuon_id",$fukuon_id)->get();
         return view('play')->with(["item" => $item]);
@@ -77,8 +77,8 @@ class HomeController extends Controller
       function ranking() {
         // $item  =  DB::table('voices')->orderBy('play_count', 'desc')->limit(20)->get();
         $ranking = Voice::orderBy('play_count','desc')
-                   ->limit(20)
-                   ->get();
+                   ->simplePaginate(5);
+                   
                    
         return view('ranking')->with(["item" => $ranking]);
     }
@@ -87,8 +87,8 @@ class HomeController extends Controller
     function newlist(){
         
          $newlist = Voice::orderBy('created_at', 'desc')
-                    ->limit(20)
-                    ->get();
+                    ->simplePaginate(5);
+                  
         return view('newlist')->with(["item" => $newlist]);
     }
     
@@ -100,7 +100,10 @@ class HomeController extends Controller
         return $video_count;
     }
     
-    
+     public function mypage()
+    {
+        return view('mypage');
+    }
     
     
     

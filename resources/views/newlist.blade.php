@@ -32,6 +32,9 @@
 </tbody>
 </table>
      </div>
+       <div class="paginate w-25 mx-auto" >
+        	{{ $item->links() }}
+        　</div>
 </div>
 <!---->
 

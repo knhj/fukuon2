@@ -46,7 +46,7 @@
           <ul class="navbar-nav ml-auto">
                
            <li class="nav-item active">
-              <a class="nav-link" href="/">副音声検索 </a>
+              <a class="nav-link" href="/fukuon_search">副音声検索 </a>
             </li> 
               
               

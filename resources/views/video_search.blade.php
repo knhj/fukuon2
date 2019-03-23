@@ -9,7 +9,7 @@
       <div class="d-flex mb-2">
    <image style="width:40px;height:40px;" src="/image/search.png"><h2 class="mb-0 ml-3" style="line-height:40px;">動画キーワード検索</h2>
    </div>
-    <div style="width:80%;" class="input-group mb-3">
+    <div style="width:80%;" class="input-group mb-3" id="search_form">
        <input id="input" type="text" class="form-control"  placeholder="動画検索キーワード" aria-label="検索キーワード" aria-describedby="basic-addon1" >
        <div class="input-group-append">
        <button id="search_btn" class="btn btn-secondary" type="button">検索</button>
@@ -28,6 +28,7 @@ const setbtn = document.getElementById("setbtn");
 var pageToken = "";
 
 search_btn.addEventListener('click', function(e) {
+   
 // console.log(input.value);
 var ajax = new XMLHttpRequest();
     ajax.open("get", 'https://www.googleapis.com/youtube/v3/search?part=snippet&videoDuration=short&type=video&maxResults=20&q=' + input.value + '&order=viewCount&key=AIzaSyDujH8RbX5ji2m4lrCeZO9PziawwLxQCfk');
@@ -36,9 +37,12 @@ var ajax = new XMLHttpRequest();
     ajax.onload = function (e) {
     //   console.log(this.response.items[0].id.videoId);
     //  console.log(this.response.nextPageToken);
+      delete_search_form();
       pageToken = this.response.nextPageToken;
      
      var tmp = '<div class="row my-5 border-bottom border-dark"><div class="col-10 pl-5" style="font-size:1.2em;" id="result_title">検索結果</div><div class="col-2 text-center" style="font-size:1.2em;" id="result_on">副音声投稿数</div></div>';
+    
+    
     
      var array = [];
       for (var i = 0; i < this.response.items.length; i++) {
@@ -88,23 +92,20 @@ setbtn.addEventListener('click', function(e) {
     // console.log(this);
     var tmp = "";
     pageToken = this.response.nextPageToken;
+    
+    
+    
      var array = [];
       for (var i = 0; i < this.response.items.length; i++) {
      var videoid = this.response.items[i].id.videoId;
      var thmbnailurl = this.response.items[i].snippet.thumbnails.medium.url;
      var vtitle = this.response.items[i].snippet.title;
     array.push(videoid);
-    // var ajax = new XMLHttpRequest();
-    // ajax.open("get", '/number/'+videoid);
-    // ajax.responseType = 'json';
-    // ajax.send();
-    // ajax.onload = function (e) {
-    // console.log(this);
      
-       tmp += '<div class="row mb-2 ">';
+      tmp += '<div class="row mb-2 ">';
       tmp +=   '<a class="col-10" href="/part/'+ videoid +'">';
       tmp +=     '<div class="col-10 d-inline-flex flex-row" id="result_title">';
-      tmp +=       '<img class="img-thumbnail" style="width:128px;height:72px" src="' + thmbnailurl + '">';
+      tmp +=　 '<img class="img-thumbnail" style="width:128px;height:72px" src="' + thmbnailurl + '">';
       tmp +=  '<div >'+vtitle+'</div>';
       tmp +=     '</div>';
       tmp +=   '</a>';
@@ -139,7 +140,10 @@ function number_count(vid){
     
 }
 
-
+function delete_search_form(){
+    var search_form = document.getElementById("search_form");
+    search_form.style.display = 'none';
+}
 
 
 

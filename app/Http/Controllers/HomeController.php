@@ -23,10 +23,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-        
     }
     
-    //トップ画面へ
+    //トップ画面表示
     public function top()
     {
         //apiを使用するときはmain.blade.phpへ飛ばす
@@ -34,21 +33,30 @@ class HomeController extends Controller
         return view('top');
     }
     
-    //動画検索
+    //動画検索画面表示
     public  function video_search() {
         // $item  =  DB::table('voices')->get();
         // return view('video_search')->with(["item" => $item]);
         return view('video_search');
     }
     
-    //副音声検索
+    //副音声検索画面表示
       public  function fukuon_search() {
-        $item  =  DB::table('voices')->get();
-        return view('video_search')->with(["item" => $item]);
+        // $item  =  Voice::get();
+         $items  =  Voice::simplePaginate(5);
+        return view('fukuon_search')->with(["items" => $items]);
+        // return view('fukuon_search');
+    }
+    
+     //副音声検索
+      public  function fukuon_keyword_search($keyword) {
+        $items  = Voice::where('fukuon_title','like','%'.$keyword.'%')->simplePaginate(5);
+        return view('fukuon_search')->with(["items" => $items]);
     }
     
     
-     function play($video_id,$fukuon_id) {
+    
+     public function play($video_id,$fukuon_id) {
         $item  =  DB::table('voices')->where("fukuon_id",$fukuon_id)->get();
         return view('play')->with(["item" => $item]);
     }

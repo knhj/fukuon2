@@ -14,28 +14,28 @@
    
     <table class="table table-borderless table-hover">
         <thead class="bg-gray border-bottom border-dark">
-            <tr>
-                <th scope="col" class="w-50">副音声タイトル</th>
-         <th scope="col">投稿者名</th>
-          <th scope="col">投稿日時</th>
-          <th scope="col">再生回数</th>
+          <tr>
+            <th scope="col" class="w-50">副音声タイトル</th>
+            <th scope="col">投稿者名</th>
+            <th scope="col">投稿日時</th>
+            <th scope="col">再生回数</th>
           </tr>
-          </thead>
-    <tbody>      
+        </thead>
+        <tbody>      
     
- @foreach ($item as $object)
- 
- <tr >
-     <td><a href="/part/{{$object->video_id}}/{{$object->fukuon_id}}">{{$object->fukuon_title}} </a></td>
-     <td>{{$object->name}}</td>
-     <td>{{$object->created_at}}</td>
-     <td>{{$object->play_count}}</td>
- </tr>
-
-@endforeach
-</tbody>
-</table>
-     </div>
+         @foreach ($item as $object)
+         
+         <tr >
+             <td><a href="/part/{{$object->video_id}}/{{$object->fukuon_id}}">{{$object->fukuon_title}} </a></td>
+             <td>{{$object->name}}</td>
+             <td>{{$object->created_at}}</td>
+             <td>{{$object->play_count}}</td>
+         </tr>
+        
+        @endforeach
+        </tbody>
+    </table>
+</div>
 </div>
 
 

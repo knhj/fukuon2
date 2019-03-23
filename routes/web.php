@@ -7,8 +7,11 @@ Route::get('part/', 'HomeController@video_search');
 //副音声検索画面へ
 Route::get('fukuon_search/', 'HomeController@fukuon_search');
 
+//副音声検索処理
+Route::get('fukuon_search/{keyword}', 'HomeController@fukuon_keyword_search');
+
 //videoに対する副音声の投稿数を返す
-Route::get('number/{vid}', 'HomeController@number');
+Route::get('number/{video_id}', 'HomeController@number');
 
 //トップ画面を表示
 Route::get('/', 'HomeController@top');

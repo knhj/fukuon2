@@ -17,7 +17,7 @@
        <script src="{{ secure_asset('js/api.js') }}" defer></script>
        
        <!--for css-->
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+      <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}" />
        
         <!--- Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134638381-1"></script>
